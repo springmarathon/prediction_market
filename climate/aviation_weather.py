@@ -32,7 +32,7 @@ def poll():
 
     while True:
         try:
-            lines = fetch_metars()
+            lines = fetch_metars(hours=72)
             if lines and metar_hhmm(lines[0]) == expected:
                 ts = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
                 (OUT_DIR / f"{ts}.txt").write_text("\n".join(lines) + "\n")
